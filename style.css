@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --text: #f8fafc;
+  --muted: #aab4c5;
+  --glass: rgba(15, 20, 35, .72);
+  --border: rgba(255,255,255,.12);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  font-family: Inter, Arial, sans-serif;
+  color: var(--text);
+  background: #070a13;
+  overflow-x: hidden;
+}
+
+.bg {
+  position: fixed;
+  inset: -30%;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(131, 58, 180, .38), transparent 28%),
+    radial-gradient(circle at 80% 25%, rgba(29, 78, 216, .30), transparent 27%),
+    radial-gradient(circle at 50% 90%, rgba(236, 72, 153, .22), transparent 30%),
+    #070a13;
+  filter: blur(10px);
+  animation: drift 12s ease-in-out infinite alternate;
+}
+
+.container {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 28px 16px;
+}
+
+.profile-card {
+  width: min(100%, 520px);
+  padding: 34px 24px 22px;
+  text-align: center;
+  border: 1px solid var(--border);
+  border-radius: 30px;
+  background: var(--glass);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  box-shadow: 0 30px 90px rgba(0,0,0,.45);
+  animation: appear .7s ease both;
+}
+
+.avatar {
+  width: 92px;
+  height: 92px;
+  margin: 0 auto 14px;
+  display: grid;
+  place-items: center;
+  border-radius: 28px;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  background: linear-gradient(135deg, #8b5cf6, #ec4899, #3b82f6);
+  box-shadow: 0 14px 35px rgba(139,92,246,.35);
+  transform: rotate(-3deg);
+}
+
+.badge {
+  display: inline-block;
+  margin-bottom: 8px;
+  padding: 6px 10px;
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 999px;
+  color: #d8ccff;
+  background: rgba(139,92,246,.12);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(30px, 8vw, 42px);
+  letter-spacing: -1.8px;
+}
+
+.bio {
+  margin: 9px auto 26px;
+  max-width: 340px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.social-list {
+  display: grid;
+  gap: 12px;
+}
+
+.social {
+  min-height: 70px;
+  display: grid;
+  grid-template-columns: 48px 1fr 28px;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  color: var(--text);
+  text-align: left;
+  text-decoration: none;
+  border: 1px solid var(--border);
+  border-radius: 19px;
+  background: rgba(255,255,255,.055);
+  transition: transform .22s ease, background .22s ease, border-color .22s ease;
+}
+
+.social:hover {
+  transform: translateY(-3px) scale(1.01);
+  background: rgba(255,255,255,.10);
+  border-color: rgba(255,255,255,.25);
+}
+
+.icon {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: 15px;
+  font-size: 22px;
+  font-weight: 800;
+  background: rgba(255,255,255,.09);
+}
+
+.social b {
+  display: block;
+  font-size: 15px;
+  margin-bottom: 3px;
+}
+
+.social small {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.arrow {
+  color: #aeb8ca;
+  font-size: 19px;
+  transition: transform .2s ease;
+}
+
+.social:hover .arrow {
+  transform: translate(2px,-2px);
+}
+
+.instagram .icon { background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045); }
+.tiktok .icon { background: linear-gradient(135deg, #111827, #25f4ee); }
+.youtube .icon { background: #ff0033; }
+.threads .icon { background: #222; }
+
+.footer {
+  margin: 22px 0 0;
+  color: #737e91;
+  font-size: 11px;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(18px) scale(.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes drift {
+  from { transform: translate3d(-2%, -1%, 0) scale(1); }
+  to { transform: translate3d(2%, 2%, 0) scale(1.06); }
+}
+
+@media (max-width: 420px) {
+  .container { padding: 18px 12px; }
+  .profile-card { padding: 28px 16px 18px; border-radius: 25px; }
+  .social { min-height: 66px; grid-template-columns: 44px 1fr 24px; }
+  .icon { width: 44px; height: 44px; }
+}
